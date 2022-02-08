@@ -1,5 +1,10 @@
+from json import load
 import nextcord, os
 from nextcord.ext import commands
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 client = commands.Bot(command_prefix="/")
 
@@ -11,4 +16,4 @@ for filename in os.listdir('./bot/cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
     
-client.run(TOKEN)
+client.run(os.getenv('TOKEN'))
