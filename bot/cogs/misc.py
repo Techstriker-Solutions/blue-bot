@@ -10,5 +10,17 @@ class misc(commands.Cog, name="Misc"):
     async def ping(self,interaction: nextcord.Interaction):
         await interaction.response.send_message("Pong!")
 
+    @nextcord.slash_command()
+    async def echo(self,interaction: nextcord.Interaction):
+        await interaction.response.send_message(interaction.message.content)
+    
+    @nextcord.slash_command()
+    async def help(self,interaction: nextcord.Interaction):
+        await interaction.response.send_message("```\n/ping - Pong!\n/echo - Echo the message\n/help - This message\n```")
+    
+    @nextcord.slash_command()
+    async def source(self,interaction: nextcord.Interaction):
+        await interaction.response.send_message("https://github.com/Techstriker-Solutions/blue-bot")
+
 def setup(client):
     client.add_cog(misc(client))
